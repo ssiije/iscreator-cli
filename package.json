@@ -1,8 +1,10 @@
 {
   "name": "iscreator-cli",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.1",
+  "description": "iscreator",
+  "bin": {
+    "iscreator": "bin/iscreator.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,5 +20,15 @@
   "bugs": {
     "url": "https://github.com/ssiije/iscreator-cli/issues"
   },
-  "homepage": "https://github.com/ssiije/iscreator-cli#readme"
+  "homepage": "https://github.com/ssiije/iscreator-cli#readme",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^2.16.0",
+    "download-git-repo": "^1.0.2",
+    "fs-extra": "^7.0.0",
+    "ora": "^3.0.0",
+    "request": "^2.87.0",
+    "shelljs": "^0.8.2",
+    "unzip2": "^0.2.5"
+  }
 }
