@@ -1,6 +1,6 @@
 {
   "name": "iscreator-cli",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "iscreator",
   "bin": {
     "iscreator": "bin/iscreator.js"

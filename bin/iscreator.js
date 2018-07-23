@@ -8,7 +8,13 @@ const program = require('commander')
 program
     .version(require('../package').version)
     .usage('<command> [options]')
-
+program
+    .command('init <app-name>')
+    .description('npx初始化安装')
+    .option('-p, --preset <presetName>', '预留配置')
+    .action((name, cmd) => {
+        require('../lib/init.js')(name, cleanArgs(cmd))
+    })
 program
     .command('create <app-name>')
     .description('创建基础工程')
@@ -25,6 +31,7 @@ program
     .action((name, cmd) => {
         require('../lib/down.js')(name, cleanArgs(cmd))
     })
+
 program.parse(process.argv)
 
 // commander passes the Command object itself as options,
