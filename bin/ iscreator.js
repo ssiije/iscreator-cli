@@ -16,6 +16,14 @@ program
         require('../lib/init.js')(name, cleanArgs(cmd))
     })
 program
+    .command('native <name>')
+    .description('本地命令')
+    .option('-p, --preset <presetName>', '预留命令')
+    .option('-o, --option <optionName>', '预留配置')
+    .action((name, cmd) => {
+        require(process.cwd() + '/scripts/cli.js')(name, cleanArgs(cmd))
+    })
+program
     .command('create <app-name>')
     .description('创建基础工程')
     .option('-p, --preset <presetName>', '跳过提示并使用已保存或远程预置')
