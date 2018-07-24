@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-const chalk = require('chalk')
-const fs = require('fs')
+// const chalk = require('chalk')
+// const fs = require('fs')
 
 const program = require('commander')
 
@@ -9,25 +9,17 @@ program
     .version(require('../package').version)
     .usage('<command> [options]')
 program
-    .command('init <app-name>')
-    .description('npx初始化安装')
-    .option('-p, --preset <presetName>', '预留配置')
+    .command('config <config-name>')
+    .description('创建基础工程')
+    .option('-p, --preset <presetName>', '选项')
+    .option('-o, --option <optionName>', '选项')
     .action((name, cmd) => {
-        require('../lib/init.js')(name, cleanArgs(cmd))
-    })
-program
-    .command('native <name>')
-    .description('本地命令')
-    .option('-p, --preset <presetName>', '预留命令')
-    .option('-o, --option <optionName>', '预留配置')
-    .action((name, cmd) => {
-        require(process.cwd() + '/scripts/cli.js')(name, cleanArgs(cmd))
+        require(process.cwd() +'/scripts/cli')(name, cleanArgs(cmd))
     })
 program
     .command('create <app-name>')
     .description('创建基础工程')
     .option('-p, --preset <presetName>', '跳过提示并使用已保存或远程预置')
-
     .action((name, cmd) => {
         require('../lib/run')(name, cleanArgs(cmd))
     })
@@ -35,11 +27,9 @@ program
     .command('down <app-name>')
     .description('下载默认')
     .option('-p, --preset <presetName>', '跳过提示并使用已保存或远程预置')
-
     .action((name, cmd) => {
-        require('../lib/down.js')(name, cleanArgs(cmd))
+        require('../lib/down')(name, cleanArgs(cmd))
     })
-
 program.parse(process.argv)
 
 // commander passes the Command object itself as options,
