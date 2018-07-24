@@ -8,28 +8,41 @@ const program = require('commander')
 program
     .version(require('../package').version)
     .usage('<command> [options]')
+
+// program
+//     .command('new <name>')
+//     .description('初始化项目基础工程')
+//     .option('-p, --preset <presetName>', '选项')
+//     .option('-o, --option <optionName>', '选项')
+//     .action((name, cmd) => {
+//         require(process.cwd() + '/scripts/cli-base')(name, cleanArgs(cmd))
+//     })
+
+
 program
-    .command('config <config-name>')
-    .description('创建基础工程')
+    .command('init <name>')
+    .description('本地初始化工程环境')
     .option('-p, --preset <presetName>', '选项')
     .option('-o, --option <optionName>', '选项')
     .action((name, cmd) => {
-        require(process.cwd() +'/scripts/cli')(name, cleanArgs(cmd))
+        require(process.cwd() + '/scripts/cli-proj')(name, cleanArgs(cmd))
     })
+
 program
-    .command('create <app-name>')
+    .command('new <name>')
     .description('创建基础工程')
     .option('-p, --preset <presetName>', '跳过提示并使用已保存或远程预置')
     .action((name, cmd) => {
-        require('../lib/run')(name, cleanArgs(cmd))
+        require('../lib/cli-base')(name, cleanArgs(cmd))
     })
-program
-    .command('down <app-name>')
-    .description('下载默认')
-    .option('-p, --preset <presetName>', '跳过提示并使用已保存或远程预置')
-    .action((name, cmd) => {
-        require('../lib/down')(name, cleanArgs(cmd))
-    })
+
+// program
+//     .command('down <app-name>')
+//     .description('下载默认')
+//     .option('-p, --preset <presetName>', '跳过提示并使用已保存或远程预置')
+//     .action((name, cmd) => {
+//         require('../lib/down')(name, cleanArgs(cmd))
+//     })
 program.parse(process.argv)
 
 // commander passes the Command object itself as options,
